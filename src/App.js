@@ -71,7 +71,6 @@ function App() {
       <button onClick={() => handleImageAnalysis(imageUrl)}>Analizar Imagen</button>
       <button onClick={handleImageGeneration}>Generar Imagen</button>
 
-      <AnalyzeImage imageUrl={imageUrl} />
     </div>
   );
 }
