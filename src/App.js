@@ -10,14 +10,14 @@ function App() {
 
     useEffect(() => {
       const makeApiCall = async () => {
-        const url = "https://*.cognitiveservices.azure.com/computervision/imageanalysis:analyze";
-        const apiKey = "{subscription key}";
+        const url = "https://cog-ms-learn-vision-juanp.cognitiveservices.azure.com/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=denseCaptions&language=en&gender-neutral-caption=False";
+        const apiKey = "dad64a0b7c23468fbae3a45f30e8c79f";
   
         const params = {
-          features: "{string}",
-          "model-name": "{string}",
+          features: "denseCaptions",
+          "model-name": "",
           language: "en",
-          "smartcrops-aspect-ratios": "{string}",
+          "smartcrops-aspect-ratios": "",
           "gender-neutral-caption": "False",
         };
   
