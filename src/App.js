@@ -53,7 +53,7 @@ function App() {
 
   const handleImageGeneration = () => {
     // Agrega aquí la lógica para generar la imagen
-    console.log('Generando imagen');
+    console.log('Hola realizando cambios');
   };
 
   return (
