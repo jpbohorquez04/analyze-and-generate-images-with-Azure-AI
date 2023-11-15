@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-//function App() {
-//  const value = 'World';
-//  return <div>Hello {value}</div>;
-//}
 
 function App() {
   const [imageUrl, setImageUrl] = useState('');
@@ -32,8 +29,54 @@ function App() {
 
       <button onClick={handleImageAnalysis}>Analizar Imagen</button>
       <button onClick={handleImageGeneration}>Generar Imagen</button>
+
+      <AnalyzeImage imageUrl={imageUrl} />
     </div>
   );
 }
 
-export default App;
+const AnalyzeImage = ({ imageUrl }) => {
+  const [result, setResult] = useState(null);
+
+  useEffect(() => {
+    const makeApiCall = async () => {
+      const url = "https://*.cognitiveservices.azure.com/computervision/imageanalysis:analyze";
+      const apiKey = "{subscription key}";
+
+      const params = {
+        features: "{string}",
+        "model-name": "{string}",
+        language: "en",
+        "smartcrops-aspect-ratios": "{string}",
+        "gender-neutral-caption": "False",
+      };
+
+      try {
+        const response = await axios.post(`${url}?api-version=2023-02-01-preview`, { url: imageUrl }, {
+          headers: {
+            "Content-Type": "application/json",
+            "Ocp-Apim-Subscription-Key": apiKey,
+          },
+        });
+
+        // Actualizar el estado con la respuesta JSON
+        setResult(response.data);
+      } catch (error) {
+        console.error("Error:", error);
+        // Puedes manejar el error aquí si es necesario
+      }
+    };
+
+    makeApiCall();
+  }, [imageUrl]);
+
+  return (
+    <div>
+      {result && (
+        <pre>
+          {JSON.stringify(result, null, 2)}
+        </pre>
+      )}
+    </div>
+  );
+};
