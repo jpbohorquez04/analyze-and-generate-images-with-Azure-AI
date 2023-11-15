@@ -68,7 +68,7 @@ function App() {
         onChange={(e) => setImageUrl(e.target.value)}
       />
 
-      <button onClick={() => handleImageAnalysis(imageUrl)}>Analizar Imagen</button>
+      <button onClick={() => handleImageAnalysis(imageUrl)}>Analizar Imagenes</button>
       <button onClick={handleImageGeneration}>Generar Imagen</button>
 
     </div>
